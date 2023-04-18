@@ -37,6 +37,9 @@ import androidx.navigation.NavHostController
 import com.drinkz.AppBar
 import com.drinkz.DrinkCard
 import com.drinkz.model.response.DrinkResponse
+import com.drinkz.ui.theme.LightOrange
+import com.drinkz.ui.theme.Orange
+import com.drinkz.ui.theme.White2
 import com.drinkz.viewModels.DrinksViewModel
 import java.net.URLEncoder
 
@@ -48,7 +51,7 @@ fun DrinksCategoriesListScreen(viewModel: DrinksViewModel, navController: NavHos
     Scaffold(
         topBar = { AppBar("Drinkz", Icons.Default.Home, null){} }){
         Surface(
-            color = Color(234,182,118),
+            color = LightOrange,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
@@ -65,7 +68,7 @@ fun MainContent(drinks: List<DrinkResponse>, randomDrink: List<DrinkResponse>, n
         .padding(16.dp)
         .fillMaxWidth()
         .wrapContentHeight(align = Alignment.Top),
-        backgroundColor = Color(238,238,228)
+        backgroundColor = White2
     ) {
         Column(
             modifier = Modifier
@@ -108,9 +111,9 @@ fun Category (drink: DrinkResponse, clickAction: ()-> Unit){
             .padding(8.dp)
             .height(50.dp)
             .border(BorderStroke(Dp.Hairline, Color.DarkGray), RoundedCornerShape(8.dp))
-            .background(Color(234, 182, 118), RoundedCornerShape(8.dp))
+            .background(LightOrange, RoundedCornerShape(8.dp))
             .clickable { clickAction.invoke() },
-        backgroundColor = Color(234, 182, 118),
+        backgroundColor = LightOrange,
         contentColor = Color.Black
     ) {
         Box(contentAlignment = Alignment.Center){
@@ -132,7 +135,7 @@ fun RandomDrink(randomDrink: List<DrinkResponse>, navController: NavHostControll
             .padding(16.dp)
             .wrapContentHeight(align = Alignment.Top),
         style = MaterialTheme.typography.h5,
-        color = Color(226,135,67),
+        color = Orange,
         fontWeight = FontWeight.Bold
     )
     if (randomDrink.isNotEmpty()){

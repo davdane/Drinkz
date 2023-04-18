@@ -34,6 +34,7 @@ import androidx.navigation.NavHostController
 import com.drinkz.AppBar
 import com.drinkz.DrinkCard
 import com.drinkz.model.response.DrinkResponse
+import com.drinkz.ui.theme.LightOrange
 import com.drinkz.viewModels.DrinksListViewModel
 
 
@@ -48,7 +49,7 @@ fun DrinksListScreen(viewModel: DrinksListViewModel, navController: NavHostContr
         navController?.navigateUp()
     } }) {
         Surface(
-            color = Color(234,182,118),
+            color = LightOrange,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
@@ -104,7 +105,7 @@ fun SearchView(state: MutableState<TextFieldValue>) {
         singleLine = true,
         shape = RoundedCornerShape(24.dp),
         colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = Color(234,182,118),
+            backgroundColor = LightOrange,
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent

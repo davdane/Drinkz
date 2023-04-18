@@ -27,7 +27,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -39,6 +38,9 @@ import com.drinkz.AppBar
 import com.drinkz.DrinkContent
 import com.drinkz.DrinkPicture
 import com.drinkz.model.response.DrinkResponse
+import com.drinkz.ui.theme.LightBlue
+import com.drinkz.ui.theme.LightOrange
+import com.drinkz.ui.theme.Orange
 import com.drinkz.viewModels.DrinkDetailsViewModel
 
 @Composable
@@ -55,7 +57,7 @@ fun DrinkDetailsScreen(
         navController?.navigateUp()
     } }){
         Surface(
-            color = Color(234,182,118),
+            color = LightOrange,
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
@@ -68,7 +70,7 @@ fun DrinkDetailsScreen(
 
 @Composable
 fun ARDisplay(navController: NavHostController?) {
-    Button(onClick = { navController?.navigate("drinkAR") }, modifier = Modifier.wrapContentSize(), colors = ButtonDefaults.buttonColors(Color(226,135,67),)) {
+    Button(onClick = { navController?.navigate("drinkAR") }, modifier = Modifier.wrapContentSize(), colors = ButtonDefaults.buttonColors(Orange)) {
         Text(text = "Click here to see the cocktail in AR")
     }
 }
@@ -120,7 +122,7 @@ fun DrinkDetails(drink: DrinkResponse) {
         append(str)
         addStyle(
             style = SpanStyle(
-                color = Color(0xff64B5F6),
+                color = LightBlue,
                 textDecoration = TextDecoration.Underline
             ), start = str.indexOf(str[0]), str.length
         )
