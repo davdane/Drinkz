@@ -22,7 +22,7 @@ import io.github.sceneview.math.Position
 fun DrinkARScreen() {
 //    var selectedItem by remember { mutableStateOf(0) }
     lateinit var sceneView: ArSceneView
-//    lateinit var addModelButton: ExtendedFloatingActionButton
+    lateinit var addModelButton: ExtendedFloatingActionButton
     lateinit var placeModelButton: ExtendedFloatingActionButton
     lateinit var statusText: TextView
     var modelNode: ArModelNode? = null
@@ -53,10 +53,10 @@ fun DrinkARScreen() {
                 sceneView.planeRenderer.isVisible = false
             }
         }
-//        addModelButton =
-//            view.findViewById<ExtendedFloatingActionButton>(R.id.placeModelButton).apply {
-                view.setOnClickListener {
-//                    addModelButton.isVisible = false
+        addModelButton =
+            view.findViewById<ExtendedFloatingActionButton>(R.id.placeModelButton).apply {
+                setOnClickListener {
+                    addModelButton.isVisible = false
                     modelNode?.takeIf { !it.isAnchored }?.let {
                         sceneView.removeChild(it)
                         it.destroy()
@@ -87,7 +87,7 @@ fun DrinkARScreen() {
                     sceneView.selectedNode = modelNode
                     placeModelButton.isVisible = true
                 }
-//            }
+            }
 
 
 //            sceneView.cloudAnchorEnabled = true
