@@ -112,9 +112,11 @@ fun AppBar(title: String, icon: ImageVector, textState: MutableState<TextFieldVa
                 Modifier
                     .size(60.dp)
                     .padding(horizontal = 12.dp)
-                    .clickable { iconClick.invoke() }) },
+                    .clickable { iconClick.invoke() },
+                Color.Black
+            ) },
         title = {
-            Text(text = title, fontSize = 26.sp)
+            Text(text = title, fontSize = 26.sp, color = Color.Black)
             if (textState != null) {
                 SearchView(state = textState)
             }

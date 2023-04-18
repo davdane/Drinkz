@@ -91,6 +91,7 @@ fun CategoriesList(drinks: List<DrinkResponse>, navController: NavHostController
             .padding(16.dp)
             .fillMaxWidth()
             .wrapContentHeight(align = Alignment.Top),
+        color = Color.Black,
         style = MaterialTheme.typography.h5,
         fontWeight = FontWeight.Bold
     )

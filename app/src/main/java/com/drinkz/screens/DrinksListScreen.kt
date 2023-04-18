@@ -75,11 +75,11 @@ fun SearchView(state: MutableState<TextFieldValue>) {
         onValueChange = { value ->
             state.value = value
         },
-        placeholder = { Text(text = "Search...", fontSize = 16.sp, textAlign = TextAlign.Right, modifier = Modifier.fillMaxWidth()) },
+        placeholder = { Text(text = "Search...", color = Color.Black, fontSize = 16.sp, textAlign = TextAlign.Right, modifier = Modifier.fillMaxWidth()) },
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth(),
-        textStyle = TextStyle(textAlign = TextAlign.Right, fontSize = 16.sp),
+        textStyle = TextStyle(textAlign = TextAlign.Right, fontSize = 16.sp, color = Color.Black),
         trailingIcon = {
             if (state.value != TextFieldValue("")) {
                 IconButton(
@@ -91,14 +91,16 @@ fun SearchView(state: MutableState<TextFieldValue>) {
                     Icon(
                         Icons.Default.Close,
                         contentDescription = "",
-                        modifier = Modifier.size(24.dp)
+                        modifier = Modifier.size(24.dp),
+                        tint = Color.Black
                     )
                 }
             } else {
                 Icon(
                     Icons.Default.Search,
                     contentDescription = "",
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(24.dp),
+                    tint = Color.Black
                 )
             }
         },

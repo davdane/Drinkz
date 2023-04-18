@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -71,7 +72,7 @@ fun DrinkDetailsScreen(
 @Composable
 fun ARDisplay(navController: NavHostController?) {
     Button(onClick = { navController?.navigate("drinkAR") }, modifier = Modifier.wrapContentSize(), colors = ButtonDefaults.buttonColors(Orange)) {
-        Text(text = "Click here to see the cocktail in AR")
+        Text(text = "Click here to see the cocktail in AR", color = Color.Black)
     }
 }
 
@@ -115,6 +116,7 @@ fun DrinkDetails(drink: DrinkResponse) {
     val styleTitle = MaterialTheme.typography.h6
     val styleContent = MaterialTheme.typography.body1
     val paddingBottom = Modifier.padding(bottom = 12.dp)
+    val black = Color.Black
     val uriHandler = LocalUriHandler.current
     val ingr = getIngredients(drink)
     val annotatedString = buildAnnotatedString {
@@ -133,16 +135,17 @@ fun DrinkDetails(drink: DrinkResponse) {
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Category:", style = styleTitle, fontWeight = fontWeight)
-        Text(text = drink.category, style = styleContent, modifier = paddingBottom)
-        Text(text = "Ingredients: ", style = styleTitle, fontWeight = fontWeight)
+        Text(text = "Category:", style = styleTitle, fontWeight = fontWeight, color = black)
+        Text(text = drink.category, style = styleContent, modifier = paddingBottom, color = black)
+        Text(text = "Ingredients: ", style = styleTitle, fontWeight = fontWeight, color = black)
         Text(
             text = "${drink.ingr1}, ${drink.ingr2} $ingr",
             style = styleContent,
-            modifier = paddingBottom
+            modifier = paddingBottom,
+            color = black
         )
-        Text(text = "Instructions:", style = styleTitle, fontWeight = fontWeight)
-        Text(text = drink.instr, style = styleContent, modifier = paddingBottom)
+        Text(text = "Instructions:", style = styleTitle, fontWeight = fontWeight, color = black)
+        Text(text = drink.instr, style = styleContent, modifier = paddingBottom, color = black)
 
         if (drink.video!=null){
             Text(text = "Video:", style = styleTitle, fontWeight = fontWeight)
