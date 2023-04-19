@@ -1,7 +1,6 @@
 package com.drinkz.di
 
 import com.drinkz.model.DrinksRepository
-import com.drinkz.viewModels.DrinkARViewModel
 import com.drinkz.viewModels.DrinkDetailsViewModel
 import com.drinkz.viewModels.DrinksListViewModel
 import com.drinkz.viewModels.DrinksViewModel
@@ -13,5 +12,4 @@ val appModules = module {
     viewModel { DrinksViewModel(get()) }
     viewModel { DrinksListViewModel(get()) }
     viewModel { DrinkDetailsViewModel(get()) }
-    viewModel { DrinkARViewModel(get()) }
 }

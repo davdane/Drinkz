@@ -86,7 +86,7 @@ fun DetailCard(drink: List<DrinkResponse>, navController: NavHostController?) {
             DrinkPicture(drink.first().thumbnail, 260.dp)
             DrinkContent(drink.first())
             DrinkDetails(drink.first())
-            ARDisplay(navController) //{ dest -> findNavController(activity, R.id.arScreen).navigate(dest) }
+            ARDisplay(navController)
         }
     } else {
         Box(

@@ -50,6 +50,7 @@ import com.drinkz.screens.DrinksCategoriesListScreen
 import com.drinkz.screens.DrinksListScreen
 import com.drinkz.screens.SearchView
 import com.drinkz.ui.theme.DrinkzTheme
+import com.drinkz.ui.theme.Orange
 import com.drinkz.viewModels.DrinkDetailsViewModel
 import com.drinkz.viewModels.DrinksListViewModel
 import com.drinkz.viewModels.DrinksViewModel
@@ -105,7 +106,7 @@ fun AppBar(title: String, icon: ImageVector, textState: MutableState<TextFieldVa
 
     TopAppBar(
         modifier = Modifier.height(68.dp),
-        backgroundColor = Color(226,135,67),
+        backgroundColor = Orange,
         navigationIcon = {
             Icon(icon,
                 contentDescription = "",

@@ -26,6 +26,8 @@ fun DrinkARScreen() {
     lateinit var placeModelButton: ExtendedFloatingActionButton
     lateinit var statusText: TextView
     var modelNode: ArModelNode? = null
+//    val fragmentManager = (LocalContext.current as Activity).supportFragmentManager
+//    val fragment = ARFragment()
 
     AndroidView(
         modifier = Modifier.fillMaxSize(), // Occupy the max size in the Compose UI tree
@@ -45,6 +47,7 @@ fun DrinkARScreen() {
                 statusText.isGone = reason == null
             }
         }
+
         placeModelButton =
         view.findViewById<ExtendedFloatingActionButton>(R.id.anchorModelButton).apply {
             setOnClickListener {
@@ -53,6 +56,7 @@ fun DrinkARScreen() {
                 sceneView.planeRenderer.isVisible = false
             }
         }
+//        modelNode?.onMoveBegin()
         addModelButton =
             view.findViewById<ExtendedFloatingActionButton>(R.id.placeModelButton).apply {
                 setOnClickListener {
@@ -68,12 +72,12 @@ fun DrinkARScreen() {
                         instantAnchor = false
                     ).apply {
                         loadModelGlbAsync(
-                            glbFileLocation = "models/cup_saucer_set.glb",
+                            glbFileLocation = "models/main.glb",
                             autoAnimate = true,
                             scaleToUnits = 0.3f,
                             centerOrigin = Position(x = 0.0f, y = -1.0f, z = 0.0f),
                             onError = { exception -> Log.e("Filament: ", exception.message!!) },
-                            onLoaded = { modelInstance -> Log.d("Filament: ", "entrato in onLoaded") }
+                            onLoaded = { Log.d("Filament: ", "entrato in onLoaded") }
                         )
                         sceneView.planeRenderer.isVisible = true
                         onAnchorChanged = { anchor ->

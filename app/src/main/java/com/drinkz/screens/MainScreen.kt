@@ -124,7 +124,6 @@ fun Category (drink: DrinkResponse, clickAction: ()-> Unit){
                 style = MaterialTheme.typography.h6
             )
         }
-
     }
 }
 
@@ -144,8 +143,5 @@ fun RandomDrink(randomDrink: List<DrinkResponse>, navController: NavHostControll
             navController?.navigate("drinkDetails/${randomDrink[0].id}")
         }
     }
-
-
-
 }
 
