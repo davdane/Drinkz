@@ -148,7 +148,7 @@ fun DrinkDetails(drink: DrinkResponse) {
         Text(text = drink.instr, style = styleContent, modifier = paddingBottom, color = black)
 
         if (drink.video!=null){
-            Text(text = "Video:", style = styleTitle, fontWeight = fontWeight)
+            Text(text = "Video:", style = styleTitle, fontWeight = fontWeight, color = black)
             ClickableText(text = annotatedString, style = styleContent, modifier = paddingBottom){
                 uriHandler.openUri(drink.video)
             }
