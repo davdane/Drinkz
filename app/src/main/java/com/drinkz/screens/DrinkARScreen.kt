@@ -41,10 +41,41 @@ fun DrinkARScreen() {
         // View's been inflated or state read in this block has been updated
         // Add logic here if necessary
         statusText = view.findViewById(R.id.statusText)
-        sceneView = view.findViewById<ArSceneView>(R.id.sceneView).apply {
-            onArTrackingFailureChanged = { reason ->
-                statusText.text = reason?.getDescription(context)
-                statusText.isGone = reason == null
+
+        addModelButton =
+        view.findViewById<ExtendedFloatingActionButton>(R.id.placeModelButton).apply {
+            setOnClickListener {
+                addModelButton.isVisible = false
+                modelNode?.takeIf { !it.isAnchored }?.let {
+                    sceneView.removeChild(it)
+                    it.destroy()
+                }
+                modelNode = ArModelNode(
+                    placementMode = PlacementMode.BEST_AVAILABLE,
+                    hitPosition = Position(0.0f, 0.0f, -2.0f),
+                    followHitPosition = true,
+                    instantAnchor = false
+                ).apply {
+                    loadModelGlbAsync(
+                        glbFileLocation = "models/main.glb",
+                        autoAnimate = true,
+                        scaleToUnits = 0.3f,
+                        centerOrigin = Position(x = 0.0f, y = -1.0f, z = 0.0f),
+                        onError = { exception -> Log.e("Filament: ", exception.message!!) },
+                        onLoaded = { Log.d("Filament: ", "entrato in onLoaded") }
+                    )
+                    sceneView.planeRenderer.isVisible = true
+                    onAnchorChanged = { anchor ->
+                        placeModelButton.isGone = anchor != null
+                    }
+                    onHitResult = { node, _ ->
+                        placeModelButton.isGone = !node.isTracking
+                    }
+                }
+                modelNode!!.isEditable = false
+                sceneView.addChild(modelNode!!)
+                sceneView.selectedNode = modelNode
+                placeModelButton.isVisible = true
             }
         }
 
@@ -56,42 +87,20 @@ fun DrinkARScreen() {
                 sceneView.planeRenderer.isVisible = false
             }
         }
-//        modelNode?.onMoveBegin()
-        addModelButton =
-            view.findViewById<ExtendedFloatingActionButton>(R.id.placeModelButton).apply {
-                setOnClickListener {
-                    addModelButton.isVisible = false
-                    modelNode?.takeIf { !it.isAnchored }?.let {
-                        sceneView.removeChild(it)
-                        it.destroy()
-                    }
-                    modelNode = ArModelNode(
-                        placementMode = PlacementMode.BEST_AVAILABLE,
-                        hitPosition = Position(0.0f, 0.0f, -2.0f),
-                        followHitPosition = true,
-                        instantAnchor = false
-                    ).apply {
-                        loadModelGlbAsync(
-                            glbFileLocation = "models/main.glb",
-                            autoAnimate = true,
-                            scaleToUnits = 0.3f,
-                            centerOrigin = Position(x = 0.0f, y = -1.0f, z = 0.0f),
-                            onError = { exception -> Log.e("Filament: ", exception.message!!) },
-                            onLoaded = { Log.d("Filament: ", "entrato in onLoaded") }
-                        )
-                        sceneView.planeRenderer.isVisible = true
-                        onAnchorChanged = { anchor ->
-                            placeModelButton.isGone = anchor != null
-                        }
-                        onHitResult = { node, _ ->
-                            placeModelButton.isGone = !node.isTracking
-                        }
-                    }
-                    sceneView.addChild(modelNode!!)
-                    sceneView.selectedNode = modelNode
-                    placeModelButton.isVisible = true
-                }
+
+        sceneView = view.findViewById<ArSceneView>(R.id.sceneView).apply {
+            onArTrackingFailureChanged = { reason ->
+                placeModelButton.isVisible = false
+                addModelButton.isClickable = false
+                statusText.text = reason?.getDescription(context)
+                statusText.isGone = reason == null
+                addModelButton.isClickable = statusText.isGone
             }
+        }
+
+
+//        modelNode?.onMoveBegin()
+
 
 
 //            sceneView.cloudAnchorEnabled = true
