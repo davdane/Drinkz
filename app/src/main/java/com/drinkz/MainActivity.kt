@@ -175,3 +175,9 @@ fun AppBarPreview(){
     AppBar(title = "Home", icon = Icons.Default.Home, textState) { }
 }
 
+@Preview
+@Composable
+fun PicturePreview(){
+    DrinkPicture(thumbnail = "https://tabris.com/wp-content/uploads/2021/06/jetpack-compose-icon_RGB.png", imageSize = 50.dp)
+}
+

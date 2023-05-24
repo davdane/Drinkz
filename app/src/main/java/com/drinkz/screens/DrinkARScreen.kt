@@ -57,9 +57,9 @@ fun DrinkARScreen() {
                     instantAnchor = false
                 ).apply {
                     loadModelGlbAsync(
-                        glbFileLocation = "models/main.glb",
+                        glbFileLocation = "models/test_lattina_birra.glb",
                         autoAnimate = true,
-                        scaleToUnits = 0.3f,
+                        scaleToUnits = 0.1f,
                         centerOrigin = Position(x = 0.0f, y = -1.0f, z = 0.0f),
                         onError = { exception -> Log.e("Filament: ", exception.message!!) },
                         onLoaded = { Log.d("Filament: ", "entrato in onLoaded") }
